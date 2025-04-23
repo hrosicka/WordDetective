@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1>Word Detective</h1>
+    <div id="score-container">
+        <h2>Current Score <span id="score">0</span></h2>
+    </div>
     <div class="clues-container">
         <p>{{ clues }}</p>
     </div>
@@ -22,7 +25,7 @@
 
     {% if attempts_left > 0 and "_" in guessed_letters %}
     <form method="POST" action="/">
-        <label for="guess">Your Guess:</label>
+        <label for="guess">Your Guess</label>
         <input type="text" id="guess" name="guess" autocomplete="off" placeholder="Enter a letter">
         <button type="submit">Guess</button>
     </form>
@@ -30,9 +33,48 @@
 
     <p><a class="new-game-link" href="{{ url_for('new') }}">Start New Game</a></p>
 
-    <p><a class="new-game-link" href="{{ url_for('add_word') }}">Add New Word</a></p>
-
-    <p><a class="new-game-link" href="{{ url_for('preview') }}">Preview Data</a></p>
+    <div class="link-container">
+        <a class="new-game-link" href="{{ url_for('add_word') }}">Add New Word</a>
+        <a class="new-game-link" href="{{ url_for('preview') }}">Preview Data</a>
+    </div>
 
 </body>
 </html>
+
+<script>
+    // Funkce pro kontrolu, zda hráč správně uhodl slovo
+    document.addEventListener('DOMContentLoaded', function () {
+        const guessedLetters = "{{ guessed_letters|join('') }}"; 
+        if (!guessedLetters.includes('_')) { // 
+            updateScore(10); 
+        }
+    });
+
+    // Načtení skóre při načtení stránky
+    function loadScore() {
+        fetch('/scores')
+            .then(response => response.json())
+            .then(data => {
+                const player = 'Guest'; // Změňte na aktuální hráče
+                const score = data.player_scores[player] || 0;
+                document.getElementById('score').innerText = score;
+            });
+    }
+
+    // Odeslání bodů po správné odpovědi
+    function updateScore(points) {
+        fetch('/update_score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                player: 'Guest', // Změňte na aktuální hráče
+                points: points
+            })
+        }).then(() => loadScore());
+    }
+
+    // Načtení skóre při načtení stránky
+    document.addEventListener('DOMContentLoaded', loadScore);
+</script>

@@ -179,3 +179,8 @@ button:hover {
 .new-game-link:hover {
     color: #42a5f5; /* Tmavší odstín primární */
 }
+
+.link-container {
+    display: flex;
+    gap: 30px;
+}
