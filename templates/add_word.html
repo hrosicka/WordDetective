@@ -4,20 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Word</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color, #f3f7fa);
-            color: var(--text-color-primary, #212121);
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
         h1 {
             color: var(--primary-color, #006fca);
             margin-bottom: 2rem;
@@ -46,22 +34,6 @@
             border-radius: 8px;
             font-size: 1rem;
         }
-
-        button {
-            background-color: var(--primary-color, #006fca);
-            color: #fff;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056a3;
-        }
     </style>
 </head>
 <body>
@@ -81,7 +53,7 @@
             {{ message }}
         </div>
         {% endif %}
-        
+
     </form>
 </body>
 </html>
