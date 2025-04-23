@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect, url_for
 import random
 import json
 
@@ -52,6 +52,7 @@ def game():
         elif len(guess) == len(secret_word):
             if guess == secret_word:
                 session['message'] = f"Congratulations! You guessed the word '{secret_word}'."
+                guessed_letters = secret_word
                 session['attempts_left'] = 0  # End the game
             else:
                 attempts_left -= 1
@@ -79,6 +80,42 @@ def new():
                            guessed_letters=session['guessed_letters'],
                            attempts_left=session['attempts_left'],
                            message=session['message'])
+
+@app.route('/add_word', methods=['GET', 'POST'])
+def add_word():
+    if request.method == 'POST':
+        word = request.form['word']
+        description = request.form['description']
+
+        try:
+            with open('data.json', 'r+', encoding='utf-8') as file:
+                # Load the content of the file
+                try:
+                    data = json.load(file)
+                    if not isinstance(data, dict):
+                        raise ValueError("The content of data.json is not a dictionary!")
+                except json.JSONDecodeError:
+                    # If the file is empty, initialize as an empty dictionary
+                    data = {}
+
+                # Add the new word to the dictionary
+                if word in data:
+                    return f"The word '{word}' already exists!", 400  # Prevent duplicates
+                data[word] = description
+
+                # Write back to the file
+                file.seek(0)
+                json.dump(data, file, ensure_ascii=False, indent=4)
+                file.truncate()  # Remove any remaining content
+                return redirect(url_for('index'))  # Redirect to the main page
+        except Exception as e:
+            return f"Error during saving: {str(e)}", 500
+
+    return render_template('add_word.html')  # Display the form
+
+@app.route('/')
+def index():
+    return render_template('index.html')  
 
 if __name__ == "__main__":
     app.run(debug=True)
