@@ -117,7 +117,13 @@ def add_word():
 
 @app.route('/')
 def index():
-    return render_template('index.html')  
+    return render_template('index.html')
+
+@app.route('/preview', methods=['GET'])
+def preview():
+    with open('data.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return render_template('preview.html', data=data)
 
 if __name__ == "__main__":
     app.run(debug=True)
