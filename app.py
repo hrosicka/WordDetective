@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 import random
 import json
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # A secret key is needed to work with sessions
+
+SCORE_FILE = 'scores.json'
 
 with open('data.json', 'r', encoding='utf-8') as f:
     words_with_clues = json.load(f)
@@ -27,6 +29,19 @@ def reveal_random_letter():
         random_index = random.choice(hidden_indices)
         secret_word = session['secret_word']
         session['guessed_letters'][random_index] = secret_word[random_index]
+
+# Funkce pro načtení skóre
+def load_scores():
+    try:
+        with open(SCORE_FILE, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {"player_scores": {}}
+
+# Funkce pro uložení skóre
+def save_scores(data):
+    with open(SCORE_FILE, 'w') as file:
+        json.dump(data, file, indent=4)
 
 @app.route("/", methods=["GET", "POST"])
 def game():
@@ -124,6 +139,33 @@ def preview():
     with open('data.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
     return render_template('preview.html', data=data)
+
+@app.route('/update_score', methods=['POST'])
+def update_score():
+    # Načtení dat ze skóre
+    data = load_scores()
+    scores = data["player_scores"]
+
+    # Získání jména hráče a bodů z požadavku
+    player = request.json.get('player', 'Guest')  # Výchozí hráč je "Guest"
+    points = request.json.get('points', 0)
+
+    # Aktualizace skóre hráče
+    if player in scores:
+        scores[player] += points
+    else:
+        scores[player] = points
+
+    # Uložení aktualizovaného skóre
+    save_scores(data)
+
+    return jsonify({"message": f"Updated score for {player}", "scores": scores})
+
+@app.route('/scores', methods=['GET'])
+def get_scores():
+    # Vrácení aktuálního skóre
+    data = load_scores()
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True)
