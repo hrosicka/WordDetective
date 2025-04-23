@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Word</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color, #f3f7fa);
+            color: var(--text-color-primary, #212121);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: var(--primary-color, #006fca);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--primary-color, #006fca);
+            color: #fff;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056a3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Word</h1>
+    <form method="POST" action="/add_word">
+        <label for="word">Word:</label>
+        <input type="text" id="word" name="word" placeholder="Enter word" required>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" placeholder="Enter description" required>
+
+        <button type="submit">Add Word</button>
+    </form>
+</body>
+</html>
