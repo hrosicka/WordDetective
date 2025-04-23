@@ -83,6 +83,7 @@ def new():
 
 @app.route('/add_word', methods=['GET', 'POST'])
 def add_word():
+    message = None
     if request.method == 'POST':
         word = request.form['word']
         description = request.form['description']
@@ -100,18 +101,19 @@ def add_word():
 
                 # Add the new word to the dictionary
                 if word in data:
-                    return f"The word '{word}' already exists!", 400  # Prevent duplicates
-                data[word] = description
-
-                # Write back to the file
-                file.seek(0)
-                json.dump(data, file, ensure_ascii=False, indent=4)
-                file.truncate()  # Remove any remaining content
-                return redirect(url_for('index'))  # Redirect to the main page
+                    message = f"The word '{word}' already exists!"
+                
+                else:
+                    data[word] = description
+                    # Write back to the file
+                    file.seek(0)
+                    json.dump(data, file, ensure_ascii=False, indent=4)
+                    file.truncate()  # Remove any remaining content
+                    return redirect(url_for('index'))  # Redirect to the main page
         except Exception as e:
-            return f"Error during saving: {str(e)}", 500
+            message = f"Error during saving: {str(e)}"
 
-    return render_template('add_word.html')  # Display the form
+    return render_template('add_word.html', message=message)  # Display the form
 
 @app.route('/')
 def index():

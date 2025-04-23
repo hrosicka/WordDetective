@@ -74,6 +74,14 @@
         <input type="text" id="description" name="description" placeholder="Enter description" required>
 
         <button type="submit">Add Word</button>
+        <button type="button" class="back-button" onclick="window.location.href='/'">Back</button>
+
+        {% if message %}
+        <div class="message-box {% if 'already exists' in message or 'Error' in message %}error{% else %}success{% endif %}">
+            {{ message }}
+        </div>
+        {% endif %}
+        
     </form>
 </body>
 </html>
