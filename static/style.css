@@ -180,7 +180,39 @@ button:hover {
     color: #42a5f5; /* Tmavší odstín primární */
 }
 
-.link-container {
-    display: flex;
-    gap: 30px;
-}
+.hamburger-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .menu-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 150px; 
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: right;
+  }
+  
+  .menu-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .menu-content a:hover {
+    background: #f0f0f0;
+  }

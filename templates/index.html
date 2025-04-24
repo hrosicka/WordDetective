@@ -8,6 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="hamburger-menu">
+        <button class="menu-toggle">☰</button>
+        <nav class="menu-content">
+            <a href="{{ url_for('add_word') }}">Add New Word</a>
+            <a href="{{ url_for('preview') }}">Preview Data</a>
+        </nav>
+    </div>
     <h1>Word Detective</h1>
     <div id="score-container">
         <h2>Current Score <span id="score">0</span></h2>
@@ -32,11 +39,6 @@
     {% endif %}
 
     <p><a class="new-game-link" href="{{ url_for('new') }}">Start New Game</a></p>
-
-    <div class="link-container">
-        <a class="new-game-link" href="{{ url_for('add_word') }}">Add New Word</a>
-        <a class="new-game-link" href="{{ url_for('preview') }}">Preview Data</a>
-    </div>
 
 </body>
 </html>
@@ -77,4 +79,25 @@
 
     // Načtení skóre při načtení stránky
     document.addEventListener('DOMContentLoaded', loadScore);
+
+
+    //HAMBURGER
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuContent = document.querySelector('.menu-content');
+
+    // Otevření a zavření menu při kliknutí na tlačítko
+    menuToggle.addEventListener('click', (event) => {
+    event.stopPropagation(); // Zabrání zavření při kliknutí na tlačítko
+    menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Zavření menu při kliknutí mimo něj
+    document.addEventListener('click', () => {
+    menuContent.style.display = 'none';
+    });
+
+    // Zabrání zavření při kliknutí dovnitř menu
+    menuContent.addEventListener('click', (event) => {
+    event.stopPropagation();
+    });
 </script>

@@ -124,7 +124,7 @@ def add_word():
                     file.seek(0)
                     json.dump(data, file, ensure_ascii=False, indent=4)
                     file.truncate()  # Remove any remaining content
-                    return redirect(url_for('index'))  # Redirect to the main page
+                    return render_template('add_word.html')
         except Exception as e:
             message = f"Error during saving: {str(e)}"
 
