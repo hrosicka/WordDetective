@@ -11,10 +11,89 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
+        :root {
+            --background-color: #ffffff;
+            --text-color: #212121;
+            --table-header-bg: #343a40;
+            --table-header-text: #ffffff;
+            --table-row-bg: #ffffff;
+            --table-row-bg-alt: #f8f9fa;
+            --primary-color: #006fca;
+        }
+    
+        [data-theme="dark"] {
+            --background-color: #1e1e1e;
+            --text-color: #e0e0e0 !important;
+            --table-header-bg: #1e1e1e;
+            --table-header-text: #e0e0e0;
+            --table-row-bg: #1e1e1e;
+            --table-row-bg-alt: #5a5a5a;
+            --primary-color: #5cb85c;
+    
+            /* Přepisujeme Bootstrap proměnné pro tabulky v dark mode */
+            --bs-table-color: var(--text-color) !important;
+            --bs-table-bg: var(--background-color) !important;
+            --bs-table-striped-color: var(--text-color) !important;
+            --bs-table-striped-bg: var(--table-row-bg-alt) !important;
+            --bs-table-hover-color: var(--table-header-text) !important;
+            --bs-table-hover-bg: var(--table-header-bg) !important;
+            --bs-table-border-color: #444 !important;
+        }
+    
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+    
         h1 {
-            color: var(--primary-color, #006fca);
+            color: var(--primary-color);
             margin-bottom: 2rem;
             font-size: 2.5rem;
+        }
+    
+        .table {
+            color: var(--bs-table-color); /* Používáme Bootstrap proměnnou */
+            background-color: var(--bs-table-bg); /* Používáme Bootstrap proměnnou */
+            transition: background-color 0.3s, color 0.3s;
+        }
+    
+        .table thead {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+        }
+    
+        .table tbody tr:nth-child(odd) {
+            background-color: var(--bs-table-striped-bg);
+            color: var(--bs-table-striped-color) !important;
+        }
+    
+        .table tbody tr:nth-child(even) {
+            background-color: var(--bs-table-bg);
+            color: var(--bs-table-color) !important;
+        }
+    
+        /* Specifické styly pro DataTables - ZVÝŠENÁ SPECIFICITA */
+        table#dataTable.dataTable tbody tr.odd td {
+            color: var(--text-color) !important;
+            text-decoration: none !important;
+        }
+    
+        table#dataTable.dataTable tbody tr.even td {
+            color: var(--text-color) !important;
+            text-decoration: none !important;
+        }
+    
+        /* Globální odstranění přeškrtnutí - pro jistotu */
+        tr, td {
+            text-decoration: none !important;
+        }
+
+        /* Styly pro search input v DataTables v dark mode */
+        [data-theme="dark"] div.dataTables_wrapper div.dataTables_filter input {
+            color: var(--text-color) !important; /* Nastavíme barvu textu na světlou */
+            background-color: #333 !important; /* Volitelně můžeme změnit i pozadí inputu */
+            border: 1px solid #555 !important; /* Volitelně upravíme i ohraničení */
         }
     </style>
 </head>
@@ -89,6 +168,20 @@
                     }
                 ]
             });
+        });
+        
+        // Nastavení aktuálního režimu při načtení stránky
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeToggleBtn.textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
+
+        // Přepínání režimů při kliknutí na tlačítko
+        themeToggleBtn.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
         });
     </script>
 </body>
