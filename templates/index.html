@@ -13,6 +13,7 @@
         <nav class="menu-content">
             <a href="{{ url_for('add_word') }}">Add New Word</a>
             <a href="{{ url_for('preview') }}">Preview Data</a>
+            <button id="theme-toggle-btn">Dark mode</button>
         </nav>
     </div>
     <h1>Word Detective</h1>
@@ -99,5 +100,19 @@
     // Zabrání zavření při kliknutí dovnitř menu
     menuContent.addEventListener('click', (event) => {
     event.stopPropagation();
+    });
+
+    // Nastavení aktuálního režimu při načtení stránky
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggleBtn.textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
+
+    // Přepínání režimů při kliknutí na tlačítko
+    themeToggleBtn.addEventListener('click', () => {
+        const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
     });
 </script>

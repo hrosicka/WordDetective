@@ -2,7 +2,7 @@
     --primary-color: #006fca; /* Moderní světlejší modrá */
     --secondary-color: #aed581; /* Svěží světle zelená */
     --accent-color: #8a5544; /* Jemná světle oranžová */
-    --background-color: #f3f7fa; /* Velmi světlá šedá */
+    --background-color: #fefefe; /* Velmi světlá šedá */
     --text-color-primary: #212121; /* Tmavá šedá pro text */
     --text-color-secondary: #757575; /* Středně šedá pro doplňkový text */
     --border-color: #e0e0e0; /* Světlá šedá pro okraje */
@@ -14,7 +14,21 @@
     --font-family-secondary: 'Montserrat', sans-serif;
 }
 
+/* Tmavý režim */
+[data-theme="dark"] {
+    --primary-color: #90caf9; /* Světlá modrá */
+    --secondary-color: #8bc34a; /* Svěží zelená */
+    --accent-color: #ffab91; /* Jemná oranžová */
+    --background-color: #121212; /* Velmi tmavá šedá */
+    --text-color-primary: #e0e0e0; /* Světle šedá pro text */
+    --text-color-secondary: #bdbdbd; /* Středně světle šedá pro doplňkový text */
+    --border-color: #424242; /* Tmavá šedá pro okraje */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Silnější stín */
+}
+
+
 body {
+    transition: background-color var(--transition-duration) ease-in-out, color var(--transition-duration) ease-in-out;
     font-family: var(--font-family-primary);
     background-color: var(--background-color);
     color: var(--text-color-primary);
@@ -41,7 +55,7 @@ h1 {
 }
 
 .clues-container {
-    background-color: #fff;
+    background-color: var(--background-color);
     padding: var(--spacing-unit);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -113,7 +127,7 @@ input[type="text"] {
     font-size: 1.1em;
     flex-grow: 1;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: var(--background-color);
     color: var(--text-color-primary);
     transition: border-color var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
 }
@@ -121,10 +135,10 @@ input[type="text"] {
 input[type="text"]:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 2px 6px rgba(var(--primary-color-rgb), 0.3);
+    box-shadow: 0 2px 6px rgba(0, 111, 202, 0.3); /* Použití RGB hodnoty odpovídající --primary-color */
 }
 
-button[type="submit"] {
+button[type="submit"], button {
     background-color: var(--primary-color);
     color: #fff;
     border: none;
@@ -137,27 +151,8 @@ button[type="submit"] {
     box-shadow: var(--box-shadow);
 }
 
-button[type="submit"]:hover {
-    background-color: #42a5f5; /* Tmavší odstín primární */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-button {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: calc(0.75 * var(--spacing-unit)) calc(1.5 * var(--spacing-unit));
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color var(--transition-duration) ease-in-out, transform 0.1s ease-in-out;
-    font-weight: 600;
-    box-shadow: var(--box-shadow);
-}
-
-button:hover {
-    background-color: #42a5f5; /* Tmavší odstín primární */
+button[type="submit"]:hover, button:hover {
+    background-color: #004a87; /* Tmavší odstín primární barvy */
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
@@ -177,7 +172,7 @@ button:hover {
 }
 
 .new-game-link:hover {
-    color: #42a5f5; /* Tmavší odstín primární */
+    color: #004a87; /* Tmavší odstín primární barvy */
 }
 
 .hamburger-menu {
@@ -191,28 +186,36 @@ button:hover {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #333;
-  }
-  
-  .menu-content {
-    display: none;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    width: 150px; 
-    background: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    text-align: right;
-  }
-  
-  .menu-content a {
-    display: block;
+    color: var(--text-color-primary);
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--background-color);
     padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.menu-content a, .menu-content button {
     text-decoration: none;
-    color: #333;
-  }
-  
-  .menu-content a:hover {
-    background: #f0f0f0;
-  }
+    color: var(--text-color-primary);
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0.75em;
+    text-align: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease-in-out;
+    border-radius: var(--border-radius);
+}
+
+.menu-content a:hover, .menu-content button:hover {
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    color: var(--text-color-primary);
+    transform: none;
+}
