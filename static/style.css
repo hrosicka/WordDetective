@@ -181,7 +181,7 @@ button[type="submit"]:hover, button:hover {
     right: 10px;
   }
   
-  .menu-toggle {
+.menu-toggle {
     background: none;
     border: none;
     font-size: 24px;
@@ -190,9 +190,11 @@ button[type="submit"]:hover, button:hover {
 }
 
 .menu-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 150px; 
     background-color: var(--background-color);
     padding: 10px;
     border-radius: var(--border-radius);
@@ -200,22 +202,24 @@ button[type="submit"]:hover, button:hover {
 }
 
 .menu-content a, .menu-content button {
+    display: block; /* Oba prvky se budou chovat stejně jako bloky */
     text-decoration: none;
-    color: var(--text-color-primary);
+    color: var(--text-color-primary); /* Barva textu */
     font-size: 1em;
-    font-weight: 300;
-    padding: 0.75em;
-    text-align: center;
-    border: none;
-    background: none;
-    cursor: pointer;
+    font-weight: 400; /* Stejná váha písma */
+    padding: 0.75em; /* Stejné vnitřní odsazení */
+    text-align: center; /* Zarovnání textu na střed */
+    width: 100%; /* Zajistí plnou šířku v rámci menu */
+    border: none; /* Odstranění okrajů tlačítek */
+    background: none; /* Odstranění výchozího pozadí tlačítek */
+    cursor: pointer; /* Ukazatel myši jako ruka */
     transition: background-color var(--transition-duration) ease-in-out;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius); /* Zaoblené rohy */
+    box-sizing: border-box; /* Zajistí správné kalkulace šířky */
 }
 
 .menu-content a:hover, .menu-content button:hover {
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    color: var(--text-color-primary);
+    background-color: var(--secondary-color); /* Zvýraznění pozadí při hover efektu */
+    color: var(--text-color-primary); /* Barva textu při hover efektu */
     transform: none;
 }
