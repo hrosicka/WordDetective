@@ -12,5 +12,9 @@
     "banana": "A long curved fruit with yellow skin and soft flesh.",
     "coffee": "A dark, bitter, hot drink made from roasted coffee beans.",
     "cheese": "A dairy product derived from milk and produced in wide ranges of flavors, textures and forms by coagulation of the milk protein casein.",
-    "city": "A large town."
+    "city": "A large town.",
+    "bike": "A vehicle with two wheels, handlebars for steering, and pedals that you push with your feet.",
+    "bus": "A large motor vehicle carrying passengers by road, typically along a fixed route.",
+    "car": "A road vehicle, typically with four wheels, powered by an internal combustion engine or electric motor and able to carry a small number of people. ",
+    "plane": "An aircraft with fixed wings and one or more engines."
 }
