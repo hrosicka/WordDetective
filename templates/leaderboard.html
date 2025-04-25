@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    h1 {
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+    }
+</style>
+<body>
+    <h1>Leaderboard</h1>
+    <ol>
+        {% for player, score in leaderboard %}
+        <li>{{ player }}: {{ score }}</li>
+        {% endfor %}
+    </ol>
+    <button type="button" class="back-button" onclick="window.location.href='/'">Back to Game</button>
+    <script>
+        // Nastavení aktuálního režimu při načtení stránky
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeToggleBtn.textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
+
+        // Přepínání režimů
+        themeToggleBtn.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
+        });
+    </script>
+</body>
+</html>

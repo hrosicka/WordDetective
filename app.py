@@ -167,5 +167,11 @@ def get_scores():
     data = load_scores()
     return jsonify(data)
 
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    data = load_scores()  # Načíst data ze scores.json
+    sorted_scores = sorted(data["player_scores"].items(), key=lambda x: x[1], reverse=True)
+    return render_template('leaderboard.html', leaderboard=sorted_scores)  # Přesměrování na šablonu
+
 if __name__ == "__main__":
     app.run(debug=True)
