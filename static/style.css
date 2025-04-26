@@ -223,3 +223,14 @@ button[type="submit"]:hover, button:hover {
     color: var(--text-color-primary); /* Barva textu při hover efektu */
     transform: none;
 }
+
+#player-name-display {
+    position: absolute;
+    top: 20px;
+    right: 150px;
+    text-align: right;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color-primary);
+}
