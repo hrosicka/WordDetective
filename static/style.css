@@ -234,3 +234,55 @@ button[type="submit"]:hover, button:hover {
     font-weight: bold;
     color: var(--text-color-primary);
 }
+
+/* Kontejner formuláře */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Zajistí vertikální zarovnání uprostřed stránky */
+    padding: 1rem; /* Prostor kolem formuláře */
+    box-sizing: border-box;
+    background-color: var(--background-color); /* Používá barvu pozadí aplikace */
+}
+
+/* Formulář */
+form {
+    display: flex;
+    flex-direction: column; /* Formulářové prvky pod sebou */
+    gap: 0.5rem; /* Mezera mezi prvky formuláře */
+    background-color: var(--background-color); /* Podle světlého/tmavého režimu */
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 400px; /* Maximální šířka formuláře */
+}
+
+/* Select a input pole */
+select, input[type="text"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    color: var(--text-color-primary);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+select {
+    padding: calc(0.5 * var(--spacing-unit));
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    background-color: var(--background-color);
+    color: var(--text-color-primary);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+    height: 2.5rem;
+    width: 100%;
+    width: 200px;
+    box-shadow: var(--box-shadow);
+    appearance: none; /* Skryje výchozí šipku combo boxu */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
