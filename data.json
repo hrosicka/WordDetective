@@ -16,5 +16,11 @@
     "bike": "A vehicle with two wheels, handlebars for steering, and pedals that you push with your feet.",
     "bus": "A large motor vehicle carrying passengers by road, typically along a fixed route.",
     "car": "A road vehicle, typically with four wheels, powered by an internal combustion engine or electric motor and able to carry a small number of people. ",
-    "plane": "An aircraft with fixed wings and one or more engines."
+    "plane": "An aircraft with fixed wings and one or more engines.",
+    "flower": "The reproductive structure found in flowering plants.",
+    "river": "A natural flowing watercourse, usually freshwater, flowing towards an ocean, sea, lake or another river.",
+    "house": "A building designed for human habitation.",
+    "bed": "A piece of furniture used for sleeping or resting on.",
+    "chair": "A seat for one person, typically having a back and four legs.",
+    "ball": "A round or oval object used in games."
 }
