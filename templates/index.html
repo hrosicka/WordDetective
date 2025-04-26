@@ -11,6 +11,7 @@
 <body>
     <div id="player-name-display">
         <span>Player: <strong id="player-display">Guest</strong></span>
+        <p><a class="new-game-link" href="{{ url_for('change_name') }}">Change Player</a></p>
     </div>
     <div class="hamburger-menu">
         <button class="menu-toggle">☰</button>
@@ -84,6 +85,17 @@
     }
 
     // Načtení skóre při načtení stránky
+    function loadScore() {
+        fetch('/scores')
+            .then(response => response.json())
+            .then(data => {
+                const playerName = data.player || 'Guest'; // Aktuální hráč
+                const score = data.score || 0; // Skóre aktuálního hráče
+                document.getElementById('player-display').innerText = playerName;
+                document.getElementById('score').innerText = score;
+            });
+    }
+
     document.addEventListener('DOMContentLoaded', loadScore);
 
 
@@ -121,14 +133,14 @@
         themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
     });
 
-    function loadPlayerName() {
-        fetch('/get_player')  // Endpoint pro získání jména hráče
-            .then(response => response.json())
-            .then(data => {
-                const playerName = data.player || 'Guest';  // Výchozí hodnota je "Guest"
-                document.getElementById('player-display').innerText = playerName;
-            });
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+    fetch('/get_player')
+        .then(response => response.json())
+        .then(data => {
+            const playerName = data.player || 'Guest';
+            document.getElementById('player-display').innerText = playerName;
+        });
+    });
 
     // Zavolat při načtení stránky
     document.addEventListener('DOMContentLoaded', loadPlayerName);
