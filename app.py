@@ -146,11 +146,11 @@ def update_score():
     data = load_scores()
     scores = data["player_scores"]
 
-    # Získání jména hráče a bodů z požadavku
-    player = request.json.get('player', 'Guest')  # Výchozí hráč je "Guest"
+    # Získání aktuálního hráče ze session
+    player = session.get('player_name', 'Guest')  # Výchozí hráč je "Guest"
     points = request.json.get('points', 0)
 
-    # Aktualizace skóre hráče
+    # Aktualizace skóre pro aktuálního hráče
     if player in scores:
         scores[player] += points
     else:
@@ -163,15 +163,54 @@ def update_score():
 
 @app.route('/scores', methods=['GET'])
 def get_scores():
-    # Vrácení aktuálního skóre
+    # Načtení dat ze skóre
     data = load_scores()
-    return jsonify(data)
+    player = session.get('player_name', 'Guest')  # Výchozí hráč je "Guest"
+    score = data["player_scores"].get(player, 0)
+    return jsonify({"player": player, "score": score})
 
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
     data = load_scores()  # Načíst data ze scores.json
     sorted_scores = sorted(data["player_scores"].items(), key=lambda x: x[1], reverse=True)
     return render_template('leaderboard.html', leaderboard=sorted_scores)  # Přesměrování na šablonu
+
+@app.route('/change_name', methods=['GET', 'POST'])
+def change_name():
+    if request.method == 'POST':
+        # Získání vybraného nebo nového jména z formuláře
+        selected_player = request.form.get('selected_player')
+        new_player_name = request.form.get('new_player_name')
+
+        # Uložení vybraného hráče nebo nového jména do session
+        session['player_name'] = new_player_name if new_player_name else selected_player
+
+        # Přesměrování zpět na hlavní obrazovku
+        return redirect(url_for('game'))
+
+    # Načtení hráčů a skóre ze souboru
+    scores = load_scores()
+
+    return render_template('change_name.html', players=scores['player_scores'])
+
+
+@app.route('/update_name', methods=['POST'])
+def update_name():
+    new_name = request.form.get('player_name', 'Guest')
+    session['player_name'] = new_name  # Uložení jména do session
+
+    # Zde můžete aktualizovat i JSON soubor scores.json, pokud je potřeba
+    data = load_scores()
+    if 'Guest' in data['player_scores']:
+        data['player_scores'][new_name] = data['player_scores'].pop('Guest')
+    save_scores(data)
+
+    return redirect(url_for('game'))
+
+@app.route('/get_player', methods=['GET'])
+def get_player():
+    player_name = session.get('player_name', 'Guest')
+    return jsonify({'player': player_name})
 
 if __name__ == "__main__":
     app.run(debug=True)
