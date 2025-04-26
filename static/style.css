@@ -216,6 +216,7 @@ button[type="submit"]:hover, button:hover {
     transition: background-color var(--transition-duration) ease-in-out;
     border-radius: var(--border-radius); /* Zaoblené rohy */
     box-sizing: border-box; /* Zajistí správné kalkulace šířky */
+    box-shadow: none;
 }
 
 .menu-content a:hover, .menu-content button:hover {
