@@ -11,14 +11,14 @@
 <body>
     <div id="player-name-display">
         <span>Player: <strong id="player-display">Guest</strong></span>
-        <p><a class="new-game-link" href="{{ url_for('change_name') }}">Change Player</a></p>
+        <p><a class="new-game-link" href="{{ url_for('player.change_name') }}">Change Player</a></p>
     </div>
     <div class="hamburger-menu">
         <button class="menu-toggle">☰</button>
         <nav class="menu-content">
-            <a href="{{ url_for('add_word') }}">Add New Word</a>
-            <a href="{{ url_for('preview') }}">Preview Data</a>
-            <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+            <a href="{{ url_for('word.add_word') }}">Add New Word</a>
+            <a href="{{ url_for('word.preview') }}">Preview Data</a>
+            <a href="{{ url_for('score.leaderboard') }}">Leaderboard</a>
             <button id="theme-toggle-btn">Dark mode</button>
         </nav>
     </div>
@@ -45,7 +45,7 @@
     </form>
     {% endif %}
 
-    <p><a class="new-game-link" href="{{ url_for('new') }}">Start New Game</a></p>
+    <p><a class="new-game-link" href="{{ url_for('game.new') }}">Start New Game</a></p>
 
 </body>
 </html>
@@ -134,7 +134,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-    fetch('/get_player')
+    fetch('/player/get_player')
         .then(response => response.json())
         .then(data => {
             const playerName = data.player || 'Guest';
