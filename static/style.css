@@ -16,7 +16,7 @@
 
 /* Tmavý režim */
 [data-theme="dark"] {
-    --primary-color: #90caf9; /* Světlá modrá */
+    --primary-color: #ba68c8; /* Světlá modrá */
     --secondary-color: #8bc34a; /* Svěží zelená */
     --accent-color: #ffab91; /* Jemná oranžová */
     --background-color: #121212; /* Velmi tmavá šedá */
@@ -240,8 +240,7 @@ button[type="submit"]:hover, button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Zajistí vertikální zarovnání uprostřed stránky */
-    padding: 1rem; /* Prostor kolem formuláře */
+    padding: 2rem; /* Prostor kolem formuláře */
     box-sizing: border-box;
     background-color: var(--background-color); /* Používá barvu pozadí aplikace */
 }
