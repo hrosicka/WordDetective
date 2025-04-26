@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="player-name-display">
+        <span>Player: <strong id="player-display">Guest</strong></span>
+    </div>
     <div class="hamburger-menu">
         <button class="menu-toggle">☰</button>
         <nav class="menu-content">
@@ -117,4 +120,16 @@
         localStorage.setItem('theme', newTheme);
         themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
     });
+
+    function loadPlayerName() {
+        fetch('/get_player')  // Endpoint pro získání jména hráče
+            .then(response => response.json())
+            .then(data => {
+                const playerName = data.player || 'Guest';  // Výchozí hodnota je "Guest"
+                document.getElementById('player-display').innerText = playerName;
+            });
+    }
+
+    // Zavolat při načtení stránky
+    document.addEventListener('DOMContentLoaded', loadPlayerName);
 </script>
