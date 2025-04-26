@@ -4,51 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Player Name</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>Change Player Name</h1>
     <style>
         h1 {
             margin-bottom: 2rem;
             font-size: 2.5rem;
         }
-
-        form {
-            padding: 2rem;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input {
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
     </style>
-    <form method="POST" action="/change_name">
-        <label for="selected-player">Select Existing Player:</label>
-        <select id="selected-player" name="selected_player">
-            <option value="">-- Select Player --</option>
-            {% for player, score in players.items() %}
-            <option value="{{ player }}">{{ player }} (Score: {{ score }})</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        <label for="new-player-name">Or Enter New Player Name:</label>
-        <input type="text" id="new-player-name" name="new_player_name">
-        <br><br>
-        <button type="submit">Save</button>
-    </form>
-    <button onclick="window.location.href='/'">Back to Game</button>
+</head>
+<body>
+    <h1>Change Player Name</h1>
+    <div class="form-container">
+        <form method="POST" action="/change_name">
+            <label for="selected-player">Select Existing:</label>
+            <select id="selected-player" name="selected_player">
+                <option value="">-- Select Player --</option>
+                {% for player, score in players.items() %}
+                <option value="{{ player }}">{{ player }} (Score: {{ score }})</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="new-player-name">Or Enter New:</label>
+            <input type="text" id="new-player-name" name="new_player_name" placeholder="Enter New Player">
+            <br><br>
+            <button type="submit">Save</button>
+            <button type="button" class="back-button" onclick="window.location.href='/'">Back to Game</button>
+        </form>
+    </div>
+    <script>
+        // Nastavení aktuálního režimu při načtení stránky
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeToggleBtn.textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
+
+        // Přepínání režimů
+        themeToggleBtn.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
+        });
+    </script>
 </body>
 </html>

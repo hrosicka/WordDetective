@@ -13,14 +13,12 @@ with open('data.json', 'r', encoding='utf-8') as f:
 def new_game():
     """Initializes a new game."""
     secret_word = random.choice(list(words_with_clues.keys()))
-    clues = words_with_clues[secret_word]
-    attempts_left = 7
-    guessed_letters = ["_" for _ in secret_word]
     session['secret_word'] = secret_word
-    session['clues'] = clues
-    session['attempts_left'] = attempts_left
-    session['guessed_letters'] = guessed_letters
+    session['clues'] = words_with_clues[secret_word]
+    session['attempts_left'] = 7
+    session['guessed_letters'] = ["_" for _ in secret_word]
     session['message'] = ""
+    session['word_guessed'] = False  # Reset příznaku
 
 def reveal_random_letter():
     """Reveals a random hidden letter in the secret word."""
@@ -51,41 +49,37 @@ def game():
     if request.method == "POST":
         guess = request.form['guess'].lower()
         secret_word = session['secret_word']
-        attempts_left = session['attempts_left']
         guessed_letters = session['guessed_letters']
 
-        if len(guess) == 1:
-            if guess in secret_word:
-                for i, letter in enumerate(secret_word):
-                    if letter == guess:
-                        guessed_letters[i] = guess
-                session['message'] = "Correct letter!"
-            else:
-                attempts_left -= 1
-                reveal_random_letter()
-                session['message'] = f"Wrong letter. You have {attempts_left} attempts left."
-        elif len(guess) == len(secret_word):
-            if guess == secret_word:
-                session['message'] = f"Congratulations! You guessed the word '{secret_word}'."
-                guessed_letters = secret_word
-                session['attempts_left'] = 0  # End the game
-            else:
-                attempts_left -= 1
-                session['message'] = f"Wrong word guess. You have {attempts_left} attempts left."
+        if len(guess) == 1 and guess in secret_word:
+            # Zkontrolujte, zda je písmeno ve slově
+            for i, letter in enumerate(secret_word):
+                if letter == guess:
+                    guessed_letters[i] = guess
+            session['message'] = "Correct letter!"
+        elif len(guess) == len(secret_word) and guess == secret_word:
+            # Pokud uživatel uhodne celé slovo
+            session['guessed_letters'] = list(secret_word)
+            if not session.get('word_guessed', False):  # Body se přičtou pouze jednou
+                update_score(10)  # Aktualizujte skóre
+                session['word_guessed'] = True  # Nastavte příznak, že slovo bylo uhádnuto
+            session['message'] = f"Congratulations! You guessed the word '{secret_word}'."
         else:
-            session['message'] = "Please enter a single letter or the whole word."
+            session['message'] = "Wrong guess. Try again."
 
-        session['attempts_left'] = attempts_left
-        session['guessed_letters'] = guessed_letters
+        session['attempts_left'] -= 1
 
-        if attempts_left <= 0 and "".join(session['guessed_letters']) != secret_word:
-            session['message'] = f"You lost. The secret word was '{secret_word}'."
+        if session['attempts_left'] <= 0 and "_" in guessed_letters:
+            session['message'] = f"You lost! The word was '{secret_word}'."
+            session['word_guessed'] = False  # Reset příznaku pro nové kolo
 
-    return render_template("index.html",
-                           clues=session['clues'],
-                           guessed_letters=session['guessed_letters'],
-                           attempts_left=session['attempts_left'],
-                           message=session['message'])
+    return render_template(
+        "index.html",
+        clues=session['clues'],
+        guessed_letters=session['guessed_letters'],
+        attempts_left=session['attempts_left'],
+        message=session['message']
+    )
 
 @app.route("/new_game")
 def new():
@@ -141,20 +135,22 @@ def preview():
     return render_template('preview.html', data=data)
 
 @app.route('/update_score', methods=['POST'])
-def update_score():
+def update_score(points):
     # Načtení dat ze skóre
     data = load_scores()
     scores = data["player_scores"]
 
     # Získání aktuálního hráče ze session
-    player = session.get('player_name', 'Guest')  # Výchozí hráč je "Guest"
-    points = request.json.get('points', 0)
+    player = session.get('player_name', 'Guest')
 
     # Aktualizace skóre pro aktuálního hráče
     if player in scores:
         scores[player] += points
     else:
         scores[player] = points
+
+    # Uložení aktualizovaného skóre
+    save_scores(data)
 
     # Uložení aktualizovaného skóre
     save_scores(data)
@@ -178,19 +174,14 @@ def leaderboard():
 @app.route('/change_name', methods=['GET', 'POST'])
 def change_name():
     if request.method == 'POST':
-        # Získání vybraného nebo nového jména z formuláře
         selected_player = request.form.get('selected_player')
         new_player_name = request.form.get('new_player_name')
 
-        # Uložení vybraného hráče nebo nového jména do session
         session['player_name'] = new_player_name if new_player_name else selected_player
-
-        # Přesměrování zpět na hlavní obrazovku
+        session['word_guessed'] = False  # Reset příznaku při změně uživatele
         return redirect(url_for('game'))
 
-    # Načtení hráčů a skóre ze souboru
     scores = load_scores()
-
     return render_template('change_name.html', players=scores['player_scores'])
 
 
