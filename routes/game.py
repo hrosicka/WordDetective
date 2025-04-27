@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, current_app
 from routes.game_logic import new_game, reveal_random_letter
+import requests
 
 game_bp = Blueprint('game', __name__)
 
@@ -12,6 +13,7 @@ def game():
     POST request: Processes the user's guess, updates the game state in the session, and provides feedback.
     """
     if not current_app.words_with_clues:
+        current_app.logger.error('Failed to load words for the game.')
         # If words haven't been loaded successfully, display an error page to the user.
         return render_template('error.html', message='Failed to load words for the game.')
 
@@ -36,12 +38,14 @@ def game():
             session['guessed_letters'] = list(secret_word)
             if not session.get('word_guessed', False):
                 # Placeholder for calling a function to update the score from another blueprint.
-                # Example: requests.post(url_for('scores.update_score', points=10))
+                requests.post(url_for('score.update_score', _external=True), json={'points': 10})
                 session['word_guessed'] = True
             session['message'] = f"Congratulations! You guessed the word '{secret_word}'."
+            current_app.logger.info(f"User correctly guessed the word: '{secret_word}'")
         # Handle incorrect guesses.
         else:
             session['message'] = "Wrong guess. Try again."
+            current_app.logger.info(f"Incorrect guess: '{guess}'")
 
         # Decrement the number of attempts left.
         session['attempts_left'] -= 1
