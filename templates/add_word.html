@@ -54,18 +54,8 @@
     </form>
     <script>
         // Nastavení aktuálního režimu při načtení stránky
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
-        themeToggleBtn.textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
-
-        // Přepínání režimů
-        themeToggleBtn.addEventListener('click', () => {
-            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
-        });
     </script>
 </body>
 </html>

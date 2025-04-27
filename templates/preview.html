@@ -136,9 +136,6 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
     <!-- JSZip for Excel Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <!-- pdfmake for PDF Export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0/vfs_fonts.js"></script>
     <!-- Bootstrap JS (volitelné) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -172,18 +169,8 @@
         });
         
         // Nastavení aktuálního režimu při načtení stránky
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
-        themeToggleBtn.textContent = currentTheme === 'dark' ? 'Light mode' : 'Dark mode';
-
-        // Přepínání režimů při kliknutí na tlačítko
-        themeToggleBtn.addEventListener('click', () => {
-            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            themeToggleBtn.textContent = newTheme === 'dark' ? 'Light mode' : 'Dark mode';
-        });
     </script>
 </body>
 </html>

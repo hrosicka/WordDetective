@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, current_app, render_template
+from flask import Blueprint, jsonify, request, session, current_app, render_template
 import json
 
 score_bp = Blueprint('score', __name__)
@@ -17,12 +17,15 @@ def save_scores(file_path, data):
         json.dump(data, file, indent=4)
 
 @score_bp.route('/update', methods=['POST'])
-def update_score(points=None):
-    if points is None:
-        try:
-            points = int(request.form.get('points', 0))
-        except ValueError:
-            return jsonify({"error": "Invalid points value"}), 400
+def update_score():
+    print ("ahoj")
+    try:
+        data = request.get_json()
+        points = int(data.get('points', 0))
+    except (ValueError, TypeError):
+        return jsonify({"error": "Invalid points value"}), 400
+    except request.exceptions.BadRequest:
+        return jsonify({"error": "Invalid JSON data"}), 400
 
     scores_file = current_app.config['SCORE_FILE']
     data = load_scores(scores_file)
