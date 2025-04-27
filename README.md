@@ -68,14 +68,24 @@ Follow these steps to set up the project locally:
 ```Code
 GameWebWordHunt/
 │
+├── routes/
+│   ├── game_logic.py
+│   ├── game.py
+│   ├── player.py
+│   ├── score.py
+│   └── word.py
+│ 
 ├── static/
 │   └── style.css  # Main stylesheet
 │
 ├── templates/
 │   ├── index.html     # Main game interface
 │   ├── add_word.html  # Add new words page
+│   ├── change_name.html
+│   ├── error.html
+│   ├── leaderboard.html
 │   └── preview.html   # Data preview page
-│
+│ 
 ├── app.py             # Main application logic
 └── README.md          # Project documentation
 ```
