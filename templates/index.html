@@ -13,12 +13,12 @@
         <span>Player: <strong id="player-display">Guest</strong></span>
         <p><a id="change-name-link" class="new-game-link" href="{{ url_for('player.change_name') }}">Change Player</a></p>
     </div>
-    <div class="hamburger-menu">
+    <div class="hamburger-menu" id="hamburger-menu">
         <button class="menu-toggle">☰</button>
         <nav class="menu-content">
-            <a href="{{ url_for('word.add_word') }}">Add New Word</a>
-            <a href="{{ url_for('word.preview') }}">Preview Data</a>
-            <a href="{{ url_for('score.leaderboard') }}">Leaderboard</a>
+            <a id="menu-add-word" href="{{ url_for('word.add_word') }}">Add New Word</a>
+            <a id="menu-preview-data" href="{{ url_for('word.preview') }}">Preview Data</a>
+            <a id="menu-leaderboard" href="{{ url_for('score.leaderboard') }}">Leaderboard</a>
             <button id="theme-toggle-btn">Dark mode</button>
         </nav>
     </div>
