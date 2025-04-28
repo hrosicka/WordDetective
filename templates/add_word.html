@@ -42,8 +42,8 @@
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" placeholder="Enter description" required>
 
-        <button type="submit">Add Word</button>
-        <button type="button" class="back-button" onclick="window.location.href='/'">Back to Game</button>
+        <button id="submit-word-button" type="submit">Add Word</button>
+        <button id="home-button" type="button" class="back-button" onclick="window.location.href='/'">Back to Game</button>
 
         {% if message %}
         <div class="message-box {% if 'already exists' in message or 'Error' in message %}error{% else %}success{% endif %}">
