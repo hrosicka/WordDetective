@@ -4,6 +4,7 @@ from routes.word import word_bp
 from routes.score import score_bp
 from routes.player import player_bp
 from routes.game_logic import load_words
+from routes.delete import delete
 import os
 import json  # Import the json module for potential JSON parsing exceptions
 import logging
@@ -74,6 +75,7 @@ app.register_blueprint(game_bp)
 app.register_blueprint(word_bp, url_prefix='/words')  # Mount the word blueprint under the '/words' prefix.
 app.register_blueprint(score_bp, url_prefix='/scores') # Mount the score blueprint under the '/scores' prefix.
 app.register_blueprint(player_bp, url_prefix='/player') # Mount the player blueprint under the '/player' prefix.
+app.register_blueprint(delete)
 
 if __name__ == "__main__":
     # Run the Flask development server. Enabling debug mode facilitates development by providing
