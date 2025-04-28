@@ -107,6 +107,7 @@
                     <tr>
                         <th>Word</th>
                         <th>Description</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,6 +115,11 @@
                     <tr>
                         <td>{{ word }}</td>
                         <td>{{ description }}</td>
+                        <td>
+                            <button class="btn btn-danger delete-button" data-word="{{ word }}" title="Delete">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -171,6 +177,30 @@
         // Nastavení aktuálního režimu při načtení stránky
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
+
+
+        // mazání slova
+        $(document).on('click', '.delete-button', function () {
+            const wordToDelete = $(this).data('word'); // Získání slova, které má být smazáno
+
+            // Potvrzení akce
+            if (confirm(`Are you sure you want to delete the word "${wordToDelete}"?`)) {
+                $.ajax({
+                    url: '/delete_word', // URL endpoint pro smazání
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ word: wordToDelete }),
+                    success: function (response) {
+                        alert(response.message); // Zobrazení zprávy o úspěchu
+                        location.reload(); // Aktualizace stránky
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Failed to delete the word: ' + error); // Chyba
+                    }
+                });
+            }
+        });
+
     </script>
 </body>
 </html>
