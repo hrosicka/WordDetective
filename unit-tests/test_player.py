@@ -13,9 +13,9 @@ class TestPlayerFunctions(unittest.TestCase):
     def setUp(self):
         """Nastavení před každým testem."""
         self.app = Flask(__name__, template_folder='../templates')
-        self.app.config['SCORE_FILE'] = 'test_scores.json'  # Použijeme dočasný soubor pro testování
+        self.app.config['SCORE_FILE'] = 'test_scores.json'
         self.app.config['SECRET_KEY'] = 'your_secret_key'
-        self.app.words_with_clues = [{"word": "test", "clues": ["clue1"]}] 
+        self.app.words_with_clues = {"test": ["clue1"]}
         self.app.register_blueprint(game_bp)
         self.app.register_blueprint(player_bp)
         self.client = self.app.test_client()
@@ -87,6 +87,15 @@ class TestPlayerFunctions(unittest.TestCase):
         self.assertIn(b'<button type="submit">Save</button>', response.data)
         self.assertIn(b'<button type="button" class="back-button"', response.data)
         self.assertIn(b'Back to Game</button>', response.data)
+
+    def test_get_player_default(self):
+            # Send a GET request to the '/player/get' endpoint
+            response = self.client.get('/player/get')
+            # Assert that the HTTP status code of the response is 200 (OK)
+            self.assertEqual(response.status_code, 200)
+            # Assert that the JSON content of the response is a dictionary
+            # with the key 'player' and the value 'Guest', which is the default player name
+            self.assertEqual(response.get_json(), {'player': 'Guest'})
 
 if __name__ == '__main__':
     unittest.main()
