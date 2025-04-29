@@ -12,7 +12,7 @@ class TestPlayerFunctions(unittest.TestCase):
 
     def setUp(self):
         """Nastavení před každým testem."""
-        self.app = Flask(__name__)
+        self.app = Flask(__name__, template_folder='../templates')
         self.app.config['SCORE_FILE'] = 'test_scores.json'  # Použijeme dočasný soubor pro testování
         self.app.config['SECRET_KEY'] = 'your_secret_key'
         self.app.words_with_clues = [{"word": "test", "clues": ["clue1"]}] 
@@ -70,6 +70,23 @@ class TestPlayerFunctions(unittest.TestCase):
             loaded_data = json.load(f)
         # Assert that the loaded data is equal to the original test data, verifying the save operation
         self.assertEqual(loaded_data, test_data)
+
+    def test_change_name_get(self):
+        response = self.client.get('/player/change_name')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content_type, 'text/html; charset=utf-8')
+
+        # Check for the presence of key texts and elements
+        self.assertIn(b'Change Player Name', response.data)
+        self.assertIn(b'<form method="POST" action="/player/change_name">', response.data)
+        self.assertIn(b'<label for="selected-player">Select Existing:</label>', response.data)
+        self.assertIn(b'<select id="selected-player" name="selected_player">', response.data)
+        self.assertIn(b'<option value="">-- Select Player --</option>', response.data)
+        self.assertIn(b'<label for="new-player-name">Or Enter New:</label>', response.data)
+        self.assertIn(b'<input type="text" id="new-player-name" name="new_player_name"', response.data)
+        self.assertIn(b'<button type="submit">Save</button>', response.data)
+        self.assertIn(b'<button type="button" class="back-button"', response.data)
+        self.assertIn(b'Back to Game</button>', response.data)
 
 if __name__ == '__main__':
     unittest.main()
