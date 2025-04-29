@@ -33,7 +33,7 @@ class TestPlayerFunctions(unittest.TestCase):
 
     def test_load_scores_existing_file(self):
         # Define the test data representing player scores
-        test_data = {"player_scores": {"Alice": 100, "Bob": 50}}
+        test_data = {"player_scores": {"Monica": 100, "Robert": 50}}
         # Open a file named 'test_scores.json' in write mode ('w')
         with open('test_scores.json', 'w') as f:
             # Dump the test_data into the file as JSON
@@ -58,6 +58,18 @@ class TestPlayerFunctions(unittest.TestCase):
         scores = load_scores('invalid.json')
         # Assert that the function returns the expected default dictionary when the JSON is invalid
         self.assertEqual(scores, {"player_scores": {}})
+
+    def test_save_scores(self):
+        # Define the test data to be saved
+        test_data = {"player_scores": {"Charlie": 200}}
+        # Call the save_scores function to save the test data to a file named 'test_save.json'
+        save_scores('test_save.json', test_data)
+        # Open the same file in read mode ('r') to load the data that was just saved
+        with open('test_save.json', 'r') as f:
+            # Load the JSON data from the file
+            loaded_data = json.load(f)
+        # Assert that the loaded data is equal to the original test data, verifying the save operation
+        self.assertEqual(loaded_data, test_data)
 
 if __name__ == '__main__':
     unittest.main()
