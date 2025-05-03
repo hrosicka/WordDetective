@@ -66,33 +66,52 @@ Get started with Word Detective in just a few steps:
 
 ## 🧪 Testing
 Word Detective includes automated tests to ensure robustness and reliability. The tests are implemented using **unittest** and **Selenium**.
-  
 
+### **Run tests**
+```Code
+python -m unittest discover -s unit-tests -p "*.py"
+```
 
 ---
 
-## Project structure
+## 📁 Project structure
 ```Code
-GameWebWordHunt/
+WordDetective/
+├── routes/               # Backend logic for the game's core functionality
+│   ├── game_logic.py     # Handles the core game logic
+│   ├── game.py           # Manages the game state
+│   ├── player.py         # Handles player-related operations
+│   ├── score.py          # Manages scoring and leaderboard logic
+│   └── word.py           # Handles word-related operations
 │
-├── routes/
-│   ├── game_logic.py
-│   ├── game.py
-│   ├── player.py
-│   ├── score.py
-│   └── word.py
-│ 
-├── static/
-│   └── style.css  # Main stylesheet
+├── static/               # Static files for styling and assets
+│   └── style.css         # Main stylesheet for the application
 │
-├── templates/
-│   ├── index.html     # Main game interface
-│   ├── add_word.html  # Add new words page
-│   ├── change_name.html
-│   ├── error.html
-│   ├── leaderboard.html
-│   └── preview.html   # Data preview page
-│ 
-├── app.py             # Main application logic
-└── README.md          # Project documentation
+├── templates/            # HTML templates for the web interface
+│   ├── index.html        # Main game interface
+│   ├── add_word.html     # Interface for adding new words
+│   ├── change_name.html  # Page for changing player names
+│   ├── error.html        # Error handling page
+│   ├── leaderboard.html  # Leaderboard display
+│   └── preview.html      # Page for previewing database content
+│
+├── tests/                # Automated tests for the application
+│   ├── test_player.py    # Test cases for player-related operations
+│   ├── test_game_logic.py # Test cases for game logic
+│   └── test_word.py      # Test cases for word operations
+│
+├── unit-tests/           # Folder for additional unit testing scripts
+│   └── test_player.py    # Test cases for player operations
+│
+├── app.py                # Main application entry point
+├── requirements.txt      # Dependencies required to run the project
+└── README.md             # Project documentation
 ```
+
+### **Key Highlights:**
+**routes/:** Contains the backend logic responsible for gameplay, scoring, and word management.
+**static/:** Stores the CSS styling to ensure a visually appealing and responsive design.
+**templates/:** Houses all HTML templates, enabling a dynamic and customizable user interface.
+**tests/:** Includes automated test cases for validating the application's core functionalities.
+**unit-tests/:** Contains additional unit tests.
+**app.py:** The central file that integrates different components and runs the application.
