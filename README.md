@@ -110,10 +110,15 @@ WordDetective/
 
 ### **Key Highlights:**
 **routes/:** Contains the backend logic responsible for gameplay, scoring, and word management.
+
 **static/:** Stores the CSS styling to ensure a visually appealing and responsive design.
+
 **templates/:** Houses all HTML templates, enabling a dynamic and customizable user interface.
+
 **tests/:** Includes automated test cases for validating the application's core functionalities.
+
 **unit-tests/:** Contains additional unit tests.
+
 **app.py:** The central file that integrates different components and runs the application.
 
 ---
