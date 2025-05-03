@@ -134,6 +134,9 @@ python app.py
 2. Open your browser and navigate to http://localhost:5000.
 3. Guess the word based on the provided hint and submit your answer.
 4. Points will be awarded for correct guesses.
+   
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/GuessDark.png)
+
 
 ### 👤 Setting Up a Player
 1. Navigate to the "Change Player" section.
