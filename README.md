@@ -2,6 +2,8 @@
 
 **Word Detective** is an interactive and engaging word-guessing game. Built with Python, HTML, and CSS, it offers an immersive experience for word enthusiasts. Whether you want to test your vocabulary, add new words to the database, or explore existing ones, Word Detective has it all with a sleek and responsive interface. 
 
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/AppDark.png))
+
 ---
 
 ## 🚀 Features
