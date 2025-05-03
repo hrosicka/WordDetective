@@ -1,4 +1,4 @@
-# 🎮 Word Detective 🎮
+# 🎮 Word Detective 🕵️
 
 **Word Detective** is an interactive and engaging word-guessing game. Built with Python, HTML, and CSS, it offers an immersive experience for word enthusiasts. Whether you want to test your vocabulary, add new words to the database, or explore existing ones, Word Detective has it all with a sleek and responsive interface. 
 
@@ -121,6 +121,34 @@ WordDetective/
 
 **app.py:** The central file that integrates different components and runs the application.
 
+---
+
+## User Documentation - How to Play
+
+1. Launch the application by running the command:
+```bash
+python app.py
+```
+2. Open your browser and navigate to http://localhost:5000.
+3. Guess the word based on the provided hint and submit your answer.
+4. Points will be awarded for correct guesses.
+
+### 👤 Setting Up a Player
+1. Navigate to the "Change Player" section.
+2. Enter your desired player name and save it.
+3. Your name will now appear in the game interface.
+
+### 📜 Game Rules
+1. Each word has a unique hint to help you guess.
+2. You can make multiple attempts until you guess the correct word.
+3. Points are calculated based on the number of attempts taken.
+4. Check the leaderboard to compare your scores with others.
+
+### ✍️ Adding a New Word
+1. Go to the "Add New Word" section.
+2. Enter the new word and its corresponding hint.
+3. Submit the word to add it to the game database.
+   
 ---
 
 ## 🎉 Conclusion
