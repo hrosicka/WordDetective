@@ -148,6 +148,14 @@ python app.py
 1. Go to the "Add New Word" section.
 2. Enter the new word and its corresponding hint.
 3. Submit the word to add it to the game database.
+
+📋 Managing the Word List
+1. Explore the "Preview Data" section to view the existing word list.
+2. Update or delete words as needed (if this functionality is supported).
+
+🌗 Dark Mode
+1. Use the "Toggle Dark Mode" button in the interface to switch between light and dark themes.
+2. The theme preference will apply across the application.
    
 ---
 
