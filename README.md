@@ -115,3 +115,12 @@ WordDetective/
 **tests/:** Includes automated test cases for validating the application's core functionalities.
 **unit-tests/:** Contains additional unit tests.
 **app.py:** The central file that integrates different components and runs the application.
+
+---
+
+## 🎉 Conclusion
+
+Thank you for checking out Word Detective! Whether you're here to guess words, expand your vocabulary, or just procrastinate in style, we hope you enjoy the experience. And remember: if you can't guess the word, it's not you—it's the dictionary's fault. 😉
+
+Happy guessing, and may the words be ever in your favor! 🕵️‍♀️✨
+
