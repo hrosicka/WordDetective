@@ -11,6 +11,7 @@
 - 🎮 **Word Guessing Game**: Solve word puzzles based on unique hints.
 - 📝 **Add New Words**: Expand the database with custom words and descriptions.
 - 📋 **Preview Data**: View and manage the word database effortlessly.
+- 🏆 **Leaderboard**: Track and compare your scores with other players.
 - 🌙 **Dark Mode Support**: Switch between light and dark themes for a comfortable experience.
 - 💡 **Interactive UI**: Fully responsive design for seamless usage across devices.
 
@@ -60,6 +61,9 @@ Get started with Word Detective in just a few steps:
 
 ### 📖 Preview Data
 - Explore and manage the database from the "Preview Data" section.
+
+### 🏆 View Leaderboard
+- Check how you rank among other players by visiting the Leaderboard.
 
 ### 🌗 Toggle Dark Mode
 - Use the toggle button to switch between light and dark themes.
@@ -154,11 +158,16 @@ python app.py
 2. Enter the new word and its corresponding hint.
 3. Submit the word to add it to the game database.
 
-📋 Managing the Word List
+### 📋 Managing the Word List
 1. Explore the "Preview Data" section to view the existing word list.
 2. Update or delete words as needed (if this functionality is supported).
 
-🌗 Dark Mode
+## 🏆 Leaderboard
+1. View the top players and their scores in a ranked list.
+2. Automatically update scores as you play.
+3. Navigate back to the game with a single click.
+
+### 🌗 Dark Mode
 1. Use the "Toggle Dark Mode" button in the interface to switch between light and dark themes.
 2. The theme preference will apply across the application.
    
