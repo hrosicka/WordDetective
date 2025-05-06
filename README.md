@@ -187,6 +187,12 @@ python app.py
    
 ---
 
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/hrosicka/WordDetective/blob/master/LICENSE) file for details.
+
+---
+
 ## 🎉 Conclusion
 
 Thank you for checking out Word Detective! Whether you're here to guess words, expand your vocabulary, or just procrastinate in style, we hope you enjoy the experience. And remember: if you can't guess the word, it's not you—it's the dictionary's fault. 😉
