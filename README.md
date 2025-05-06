@@ -147,6 +147,8 @@ python app.py
 2. Enter your desired player name and save it.
 3. Your name will now appear in the game interface.
 
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/ChangePlayer.png)
+
 ### 📜 Game Rules
 1. Each word has a unique hint to help you guess.
 2. You can make multiple attempts until you guess the correct word.
@@ -158,9 +160,13 @@ python app.py
 2. Enter the new word and its corresponding hint.
 3. Submit the word to add it to the game database.
 
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/AddNewWord.png)
+
 ### 📋 Managing the Word List
 1. Explore the "Preview Data" section to view the existing word list.
 2. Update or delete words as needed (if this functionality is supported).
+
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/ManagingWordList.PNG)
 
 ## 🏆 Leaderboard
 1. View the top players and their scores in a ranked list.
