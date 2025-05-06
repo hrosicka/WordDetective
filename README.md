@@ -129,7 +129,7 @@ WordDetective/
 
 ---
 
-## User Documentation - How to Play
+## User Documentation - Detailed steps
 
 1. Launch the application by running the command:
 ```bash
