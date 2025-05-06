@@ -173,9 +173,13 @@ python app.py
 2. Automatically update scores as you play.
 3. Navigate back to the game with a single click.
 
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/LeaderBoard.PNG))
+
 ### 🌗 Dark Mode
 1. Use the "Toggle Dark Mode" button in the interface to switch between light and dark themes.
 2. The theme preference will apply across the application.
+
+![](https://github.com/hrosicka/WordDetective/blob/master/doc/LightMode.PNG)
    
 ---
 
