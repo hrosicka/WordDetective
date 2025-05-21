@@ -1,5 +1,10 @@
 # 🎮 Word Detective 🕵️
 
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/hrosicka/WordDetective)](https://github.com/hrosicka/WordDetective/commits/master)
+[![Issues](https://img.shields.io/github/issues/hrosicka/WordDetective)](https://github.com/hrosicka/WordDetective/issues)
+
 **Word Detective** is an interactive and engaging word-guessing game. Built with Python, HTML, and CSS, it offers an immersive experience for word enthusiasts. Whether you want to test your vocabulary, add new words to the database, or explore existing ones, Word Detective has it all with a sleek and responsive interface.
 
 ![](https://github.com/hrosicka/WordDetective/blob/master/doc/AppDark.png)
