@@ -99,6 +99,42 @@
             background-color: #333 !important; /* Volitelně můžeme změnit i pozadí inputu */
             border: 1px solid #555 !important; /* Volitelně upravíme i ohraničení */
         }
+
+        /* Důležité: Následující pravidla by měla být umístěna v tvém style.css */
+        /* a měla by přijít PO načtení Bootstrap CSS a DataTables Buttons CSS */
+
+        /* Styl pro všechna tlačítka DataTables */
+        div.dataTables_wrapper div.dt-buttons .dt-button {
+            background-color: var(--primary-color); /* Použije barvu z --primary-color */
+            color: var(--background-color); /* Použije barvu textu z --text-color-primary */
+            border: none; /* Odstraní výchozí okraj, pokud nějaký je */
+            box-shadow: var(--box-shadow); /* Zachová stín */
+            transition: background-color var(--transition-duration) ease-in-out, transform 0.1s ease-in-out, color var(--transition-duration) ease-in-out;
+        }
+
+        /* Styl pro hover efekt tlačítek DataTables */
+        div.dataTables_wrapper div.dt-buttons .dt-button:hover {
+            background-color: #004a87; /* Tmavší odstín pro hover (můžeš použít i jinou proměnnou, pokud máš) */
+            color: #fff; /* Zajistí bílý text při hoveru, pokud text-color-primary by v dark mode byl tmavý */
+            transform: translateY(-2px); /* Jemný posun nahoru */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Jemně výraznější stín */
+        }
+
+        /* Přizpůsobení barvy ikonám uvnitř tlačítek, aby odpovídaly textu */
+        div.dataTables_wrapper div.dt-buttons .dt-button i.fas {
+            color: inherit; /* Ikona zdědí barvu textu rodičovského tlačítka */
+        }
+
+        /* Dark mode specifické styly pro tlačítka DataTables */
+        [data-theme="dark"] div.dataTables_wrapper div.dt-buttons .dt-button {
+            background-color: var(--primary-color); /* V dark mode --primary-color je #ba68c8 */
+            color: #fff; /* V dark mode --text-color-primary je #e0e0e0 */
+        }
+
+        [data-theme="dark"] div.dataTables_wrapper div.dt-buttons .dt-button:hover {
+            background-color: #8c4b9d; /* Trochu tmavší odstín pro hover v dark mode */
+            color: #fff; /* Bílý text při hoveru v dark mode */
+        }
     </style>
 </head>
 <body>
