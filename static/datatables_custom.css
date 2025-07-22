@@ -1,0 +1,131 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #212121;
+    --table-header-bg: #343a40;
+    --table-header-text: #ffffff;
+    --table-row-bg: #ffffff;
+    --table-row-bg-alt: #f8f9fa;
+    --primary-color: #006fca;
+}
+
+[data-theme="dark"] {
+    --background-color: #1e1e1e;
+    --text-color: #e0e0e0 !important;
+    --table-header-bg: #1e1e1e;
+    --table-header-text: #e0e0e0;
+    --table-row-bg: #1e1e1e;
+    --table-row-bg-alt: #5a5a5a;
+    --primary-color: #ba68c8;
+
+    /* Overwriting Bootstrap variables for tables in dark mode */
+    --bs-table-color: var(--text-color) !important;
+    --bs-table-bg: var(--background-color) !important;
+    --bs-table-striped-color: var(--text-color) !important;
+    --bs-table-striped-bg: var(--table-row-bg-alt) !important;
+    --bs-table-hover-color: var(--table-header-text) !important;
+    --bs-table-hover-bg: var(--table-header-bg) !important;
+    --bs-table-border-color: #444 !important;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.table {
+    color: var(--bs-table-color); /* Using Bootstrap variable */
+    background-color: var(--bs-table-bg); /* Using Bootstrap variable */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.table thead {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color) !important;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(--bs-table-bg);
+    color: var(--bs-table-color) !important;
+}
+
+/* Specific styles for DataTables - INCREASED SPECIFICITY */
+table#leaderboardTable.dataTable tbody tr.odd td {
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+table#leaderboardTable.dataTable tbody tr.even td {
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+table#dataTable.dataTable tbody tr.odd td {
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+table#dataTable.dataTable tbody tr.even td {
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+/* Global removal of strikethrough - just to be sure */
+tr, td {
+    text-decoration: none !important;
+}
+
+/* Styles for search input in DataTables in dark mode */
+/* These styles are important for the visibility of the search field in dark mode */
+[data-theme="dark"] div.dataTables_wrapper div.dataTables_filter input {
+    color: var(--text-color) !important; /* Set text color to light */
+    background-color: #333 !important; /* Optionally change input background */
+    border: 1px solid #555 !important; /* Optionally adjust border */
+}
+
+/* Important: The following rules should be placed in your style.css */
+/* and should come AFTER loading Bootstrap CSS and DataTables Buttons CSS */
+
+/* Style for all DataTables buttons */
+div.dataTables_wrapper div.dt-buttons .dt-button {
+    background-color: var(--primary-color); /* Uses color from --primary-color */
+    color: var(--background-color); /* Uses text color from --text-color-primary */
+    border: none; /* Removes default border, if any */
+    box-shadow: var(--box-shadow); /* Retains shadow */
+    transition: background-color var(--transition-duration) ease-in-out, transform 0.1s ease-in-out, color var(--transition-duration) ease-in-out;
+}
+
+/* Style for DataTables button hover effect */
+div.dataTables_wrapper div.dt-buttons .dt-button:hover {
+    background-color: #004a87; /* Darker shade for hover (you can use another variable if you have one) */
+    color: #fff; /* Ensures white text on hover, if text-color-primary would be dark in dark mode */
+    transform: translateY(-2px); /* Slight upward shift */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow */
+}
+
+/* Adjusting icon color within buttons to match text */
+div.dataTables_wrapper div.dt-buttons .dt-button i.fas {
+    color: inherit; /* Icon inherits color of parent button text */
+}
+
+/* Dark mode specific styles for DataTables buttons */
+[data-theme="dark"] div.dataTables_wrapper div.dt-buttons .dt-button {
+    background-color: var(--primary-color); /* In dark mode, --primary-color is #ba68c8 */
+    color: #fff; /* In dark mode, --text-color-primary is #e0e0e0 */
+}
+
+[data-theme="dark"] div.dataTables_wrapper div.dt-buttons .dt-button:hover {
+    background-color: #8c4b9d; /* Slightly darker shade for hover in dark mode */
+    color: #fff; /* White text on hover in dark mode */
+}
