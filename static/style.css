@@ -1,32 +1,39 @@
 :root {
-    --primary-color: #006fca; /* Moderní světlejší modrá */
-    --secondary-color: #aed581; /* Svěží světle zelená */
-    --accent-color: #8a5544; /* Jemná světle oranžová */
-    --background-color: #fefefe; /* Velmi světlá šedá */
-    --text-color-primary: #212121; /* Tmavá šedá pro text */
-    --text-color-secondary: #757575; /* Středně šedá pro doplňkový text */
-    --border-color: #e0e0e0; /* Světlá šedá pro okraje */
-    --spacing-unit: 1.25rem; /* Větší základní mezera */
-    --border-radius: 12px; /* Mírně zaoblené rohy */
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Jemný stín */
-    --transition-duration: 0.3s;
+    /* Color Palette */
+    --primary-color: #006fca; /* Modern lighter blue */
+    --secondary-color: #aed581; /* Fresh light green */
+    --accent-color: #8a5544; /* Soft light orange */
+    --background-color: #fefefe; /* Very light gray */
+    --text-color-primary: #212121; /* Dark gray for main text */
+    --text-color-secondary: #757575; /* Medium gray for supplementary text */
+    --border-color: #e0e0e0; /* Light gray for borders */
+
+    /* Spacing and Dimensions */
+    --spacing-unit: 1.25rem; /* Base spacing unit */
+    --border-radius: 12px; /* Slightly rounded corners */
+
+    /* Shadows and Transitions */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    --transition-duration: 0.3s; /* Standard transition duration */
+
+    /* Typography */
     --font-family-primary: 'Roboto', sans-serif;
     --font-family-secondary: 'Montserrat', sans-serif;
 }
 
-/* Tmavý režim */
+/* Dark Mode Configuration */
 [data-theme="dark"] {
-    --primary-color: #ba68c8; /* Světlá modrá */
-    --secondary-color: #8bc34a; /* Svěží zelená */
-    --accent-color: #ffab91; /* Jemná oranžová */
-    --background-color: #121212; /* Velmi tmavá šedá */
-    --text-color-primary: #e0e0e0; /* Světle šedá pro text */
-    --text-color-secondary: #bdbdbd; /* Středně světle šedá pro doplňkový text */
-    --border-color: #424242; /* Tmavá šedá pro okraje */
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Silnější stín */
+    --primary-color: #ba68c8; /* Light blue for dark mode */
+    --secondary-color: #8bc34a; /* Fresh green for dark mode */
+    --accent-color: #ffab91; /* Soft orange for dark mode */
+    --background-color: #121212; /* Very dark gray */
+    --text-color-primary: #e0e0e0; /* Light gray for dark mode text */
+    --text-color-secondary: #bdbdbd; /* Medium light gray for supplementary dark mode text */
+    --border-color: #424242; /* Dark gray for dark mode borders */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow for dark mode */
 }
 
-
+/* Base Body Styles */
 body {
     transition: background-color var(--transition-duration) ease-in-out, color var(--transition-duration) ease-in-out;
     font-family: var(--font-family-primary);
@@ -40,9 +47,9 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     line-height: 1.7;
-    transition: background-color var(--transition-duration) ease-in-out;
 }
 
+/* Heading Styles */
 h1 {
     color: var(--primary-color);
     margin-bottom: calc(1.5 * var(--spacing-unit));
@@ -54,6 +61,7 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Clues Container Styles */
 .clues-container {
     background-color: var(--background-color);
     padding: var(--spacing-unit);
@@ -72,6 +80,7 @@ h1 {
     font-size: 1.1em;
 }
 
+/* Secret Word Display Styles */
 .secret-word-container {
     font-size: 2.5em;
     margin-bottom: calc(2 * var(--spacing-unit));
@@ -90,6 +99,7 @@ h1 {
     transition: color var(--transition-duration) ease-in-out;
 }
 
+/* Message Display Styles */
 .message {
     margin-top: calc(1.5 * var(--spacing-unit));
     font-weight: 500;
@@ -100,11 +110,13 @@ h1 {
     animation: fadeInOut 2s ease-in-out forwards;
 }
 
+/* Fade In/Out Animation for Messages */
 @keyframes fadeInOut {
     0%, 100% { opacity: 0; }
     20%, 80% { opacity: 1; }
 }
 
+/* Form Layout */
 form {
     display: flex;
     gap: var(--spacing-unit);
@@ -113,6 +125,7 @@ form {
     max-width: 450px;
 }
 
+/* Label Styles */
 label {
     font-weight: 600;
     color: var(--text-color-primary);
@@ -120,6 +133,7 @@ label {
     margin-bottom: 0.75em;
 }
 
+/* Text Input Styles */
 input[type="text"] {
     padding: calc(0.75 * var(--spacing-unit));
     border: 1px solid var(--border-color);
@@ -135,9 +149,10 @@ input[type="text"] {
 input[type="text"]:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 2px 6px rgba(0, 111, 202, 0.3); /* Použití RGB hodnoty odpovídající --primary-color */
+    box-shadow: 0 2px 6px rgba(0, 111, 202, 0.3); /* Uses RGB value corresponding to --primary-color */
 }
 
+/* Button Styles */
 button[type="submit"], button {
     background-color: var(--primary-color);
     color: #fff;
@@ -152,11 +167,12 @@ button[type="submit"], button {
 }
 
 button[type="submit"]:hover, button:hover {
-    background-color: #004a87; /* Tmavší odstín primární barvy */
+    background-color: #004a87; /* Darker shade of primary color */
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Attempts Left Display */
 .attempts-left {
     color: var(--text-color-secondary);
     margin-bottom: var(--spacing-unit);
@@ -164,6 +180,7 @@ button[type="submit"]:hover, button:hover {
     font-size: 1em;
 }
 
+/* New Game Link Styles */
 .new-game-link {
     color: var(--primary-color);
     text-decoration: none;
@@ -172,15 +189,16 @@ button[type="submit"]:hover, button:hover {
 }
 
 .new-game-link:hover {
-    color: #004a87; /* Tmavší odstín primární barvy */
+    color: #004a87; /* Darker shade of primary color */
 }
 
+/* Hamburger Menu Styles */
 .hamburger-menu {
     position: absolute;
     top: 10px;
     right: 10px;
-  }
-  
+}
+
 .menu-toggle {
     background: none;
     border: none;
@@ -194,7 +212,7 @@ button[type="submit"]:hover, button:hover {
     position: absolute;
     top: 40px;
     right: 0;
-    width: 150px; 
+    width: 150px;
     background-color: var(--background-color);
     padding: 10px;
     border-radius: var(--border-radius);
@@ -202,29 +220,30 @@ button[type="submit"]:hover, button:hover {
 }
 
 .menu-content a, .menu-content button {
-    display: block; /* Oba prvky se budou chovat stejně jako bloky */
+    display: block; /* Both elements behave as blocks */
     text-decoration: none;
-    color: var(--text-color-primary); /* Barva textu */
+    color: var(--text-color-primary); /* Text color */
     font-size: 1em;
-    font-weight: 400; /* Stejná váha písma */
-    padding: 0.75em; /* Stejné vnitřní odsazení */
-    text-align: center; /* Zarovnání textu na střed */
-    width: 100%; /* Zajistí plnou šířku v rámci menu */
-    border: none; /* Odstranění okrajů tlačítek */
-    background: none; /* Odstranění výchozího pozadí tlačítek */
-    cursor: pointer; /* Ukazatel myši jako ruka */
+    font-weight: 400; /* Consistent font weight */
+    padding: 0.75em; /* Consistent internal padding */
+    text-align: center; /* Center align text */
+    width: 100%; /* Full width within the menu */
+    border: none; /* Remove button borders */
+    background: none; /* Remove default button background */
+    cursor: pointer; /* Pointer cursor on hover */
     transition: background-color var(--transition-duration) ease-in-out;
-    border-radius: var(--border-radius); /* Zaoblené rohy */
-    box-sizing: border-box; /* Zajistí správné kalkulace šířky */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-sizing: border-box; /* Ensure correct width calculation */
     box-shadow: none;
 }
 
 .menu-content a:hover, .menu-content button:hover {
-    background-color: var(--secondary-color); /* Zvýraznění pozadí při hover efektu */
-    color: var(--text-color-primary); /* Barva textu při hover efektu */
-    transform: none;
+    background-color: var(--secondary-color); /* Highlight background on hover */
+    color: var(--text-color-primary); /* Text color on hover */
+    transform: none; /* No transformation on hover */
 }
 
+/* Player Name Display Styles */
 #player-name-display {
     position: absolute;
     top: 20px;
@@ -236,31 +255,32 @@ button[type="submit"]:hover, button:hover {
     color: var(--text-color-primary);
 }
 
-/* Kontejner formuláře */
+/* Form Container Styles */
 .form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem; /* Prostor kolem formuláře */
+    padding: 2rem; /* Spacing around the form */
     box-sizing: border-box;
-    background-color: var(--background-color); /* Používá barvu pozadí aplikace */
+    background-color: var(--background-color); /* Uses app background color */
 }
 
-/* Formulář */
-form {
+/* General Form Styles (overrides previous form definition for a more specific use case) */
+.form-container form { /* Select the form specifically within form-container */
     display: flex;
-    flex-direction: column; /* Formulářové prvky pod sebou */
-    gap: 0.5rem; /* Mezera mezi prvky formuláře */
-    background-color: var(--background-color); /* Podle světlého/tmavého režimu */
+    flex-direction: column; /* Form elements stacked vertically */
+    gap: 0.5rem; /* Space between form elements */
+    background-color: var(--background-color); /* Adapts to light/dark mode */
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     width: 100%;
-    max-width: 400px; /* Maximální šířka formuláře */
+    max-width: 400px; /* Maximum width for the form */
+    margin: 0; /* Reset margin from the general form style */
 }
 
-/* Select a input pole */
-select, input[type="text"] {
+/* Select and Input Field Styles */
+select, .form-container input[type="text"] { /* Target input[type="text"] specifically within form-container */
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid var(--border-color);
@@ -279,10 +299,10 @@ select {
     color: var(--text-color-primary);
     transition: background-color var(--transition-duration), color var(--transition-duration);
     height: 2.5rem;
-    width: 100%;
-    width: 200px;
+    width: 100%; /* Ensures it takes full width of its container */
+    max-width: 200px; /* Provides a sensible maximum width */
     box-shadow: var(--box-shadow);
-    appearance: none; /* Skryje výchozí šipku combo boxu */
+    appearance: none; /* Hides default dropdown arrow */
     -moz-appearance: none;
     -webkit-appearance: none;
 }
