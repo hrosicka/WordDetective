@@ -24,7 +24,11 @@
     --bs-table-striped-bg: var(--table-row-bg-alt) !important;
     --bs-table-hover-color: var(--table-header-text) !important;
     --bs-table-hover-bg: var(--table-header-bg) !important;
-    --bs-table-border-color: #444 !important;
+    
+
+    --bs-border-color: #2c2c2c !important;
+    --bs-table-border-color: #2c2c2c;
+    --bs-border-color-translucent: rgba(255, 255, 255, 0.15) !important;
 }
 
 body {
