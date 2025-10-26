@@ -193,9 +193,15 @@ python app.py
    
 ---
 
-## 📜 License
+## 👩‍💻 Author
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/hrosicka/WordDetective/blob/master/LICENSE) file for details.
+Lovingly crafted by [Hanka Robovska](https://github.com/hrosicka) 👩‍🔬
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details. Free to use, modify, and distribute as needed.
 
 ---
 
