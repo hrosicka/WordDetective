@@ -20,14 +20,14 @@ Its responsive design and support for both light and dark themes make it accessi
 * [🚀 Features](#-features)
 * [🛠️ Technologies Used](#️-technologies-used)
 * [🖥️ Installation](#️-installation)
-* [🎮 How to Play](#-how-to-play)
-* [🧪 Testing](#-testing)
-* [📁 Project structure](#-project-structure)
+* [🎮 How to Play](#how-to-play)
+* [🧪 Testing](#testing)
+* [📁 Project structure](#project-structure)
 * [User Documentation - Detailed steps](#user-documentation---detailed-steps)
-* [🏆 Leaderboard](#-leaderboard)
-* [👩‍💻 Author](#-author)
+* [🏆 Leaderboard](#leaderboard)
+* [👩‍💻 Author](#author)
 * [📝 License](#-license)
-* [🎉 Conclusion](#-conclusion)
+* [🎉 Conclusion](#conclusion)
 
 ---
 
