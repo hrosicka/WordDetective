@@ -16,6 +16,21 @@ Its responsive design and support for both light and dark themes make it accessi
 
 ---
 
+## 🧭 Table of Contents
+* [🚀 Features](#-features)
+* [🛠️ Technologies Used](#️-technologies-used)
+* [🖥️ Installation](#️-installation)
+* [🎮 How to Play](#-how-to-play)
+* [🧪 Testing](#-testing)
+* [📁 Project structure](#-project-structure)
+* [User Documentation - Detailed steps](#user-documentation---detailed-steps)
+* [🏆 Leaderboard](#-leaderboard)
+* [👩‍💻 Author](#-author)
+* [📝 License](#-license)
+* [🎉 Conclusion](#-conclusion)
+
+---
+
 ## 🚀 Features
 
 - 🎮 **Word Guessing Game**: Solve word puzzles based on unique hints.
