@@ -25,7 +25,7 @@ Its responsive design and support for both light and dark themes make it accessi
 * [📁 Project structure](#-project-structure)
 * [User Documentation - Detailed steps](#user-documentation---detailed-steps)
 * [🏆 Leaderboard](#-leaderboard)
-* [👩‍💻 Author](author-link)
+* [👩‍💻 Author](#author-link)
 * [📝 License](#-license)
 * [🎉 Conclusion](#-conclusion)
 
