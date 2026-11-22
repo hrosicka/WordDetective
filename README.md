@@ -2,20 +2,35 @@
 
 <div align="center">
 
-  <a href="https://www.python.org/">
-    <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <a href="https://github.com/hrosicka/WordDetective/stargazers">
+    <img src="https://img.shields.io/github/stars/hrosicka/WordDetective?style=for-the-badge&color=4F8EF7&logo=starship&logoColor=white" alt="Stars" />
   </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License" />
+  <a href="https://github.com/hrosicka/WordDetective/network/members">
+    <img src="https://img.shields.io/github/forks/hrosicka/WordDetective?style=for-the-badge&color=4F8EF7&logo=git&logoColor=white" alt="Forks" />
+  </a>
+  <a href="https://github.com/hrosicka/WordDetective/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/hrosicka/WordDetective?style=for-the-badge&color=4F8EF7&logo=github&logoColor=white" alt="Contributors" />
   </a>
   <a href="https://github.com/hrosicka/WordDetective/commits/master">
-    <img src="https://img.shields.io/github/last-commit/hrosicka/WordDetective?style=for-the-badge&color=6366F1&logo=git&logoColor=white" alt="Last Commit" />
+    <img src="https://img.shields.io/github/last-commit/hrosicka/WordDetective?style=for-the-badge&color=6366F1&logo=githubactions&logoColor=white" alt="Last Commit" />
   </a>
-  <br/>
   <a href="https://github.com/hrosicka/WordDetective/issues">
     <img src="https://img.shields.io/github/issues/hrosicka/WordDetective?style=for-the-badge&color=F59E0B&logo=github&logoColor=white" alt="Issues" />
   </a>
-  <img src="https://img.shields.io/badge/Selenium-Tests-43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="Selenium" />
+  <br/>
+
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=FFE873" alt="Python" />
+  </a>
+  <img src="https://img.shields.io/badge/Frontend-HTML5%20%26%20CSS3-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 and CSS3" />
+  <img src="https://img.shields.io/badge/Tests-unittest%20%26%20Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="unittest and Selenium" />
+  <img src="https://img.shields.io/badge/Game-Word%20Puzzle-EC4899?style=for-the-badge&logo=game-developer&logoColor=white" alt="Word Puzzle" />
+  <img src="https://img.shields.io/github/repo-size/hrosicka/WordDetective?style=for-the-badge&color=3B82F6&logo=files&logoColor=white" alt="Repo Size" />
+  <br/>
+
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License" />
+  </a>
 
 </div>
 
