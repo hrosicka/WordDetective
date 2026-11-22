@@ -1,10 +1,23 @@
 # 🎮 Word Detective 🕵️
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/hrosicka/WordDetective)](https://github.com/hrosicka/WordDetective/commits/master)
-[![Issues](https://img.shields.io/github/issues/hrosicka/WordDetective)](https://github.com/hrosicka/WordDetective/issues)
-![Selenium](https://img.shields.io/badge/selenium-tests-informational?logo=selenium&logoColor=white)
+<div align="center">
+
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License" />
+  </a>
+  <a href="https://github.com/hrosicka/WordDetective/commits/master">
+    <img src="https://img.shields.io/github/last-commit/hrosicka/WordDetective?style=for-the-badge&color=6366F1&logo=git&logoColor=white" alt="Last Commit" />
+  </a>
+  <br/>
+  <a href="https://github.com/hrosicka/WordDetective/issues">
+    <img src="https://img.shields.io/github/issues/hrosicka/WordDetective?style=for-the-badge&color=F59E0B&logo=github&logoColor=white" alt="Issues" />
+  </a>
+  <img src="https://img.shields.io/badge/Selenium-Tests-43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="Selenium" />
+
+</div>
 
 **Word Detective** is an interactive and engaging word-guessing game. Built with Python, HTML, and CSS, it offers an immersive experience for word enthusiasts. Whether you want to test your vocabulary, add new words to the database, or explore existing ones, Word Detective has it all with a sleek and responsive interface.
 
